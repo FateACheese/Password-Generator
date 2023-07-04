@@ -23,12 +23,21 @@ function generatePassword() {
   if (hasUpper) {
     possibleChars += upperCase;
   }
+  if (hasLower) {
+    possibleChars += lowerCase;
+  }
+  if (hasNumeric) {
+    possibleChars += numberGen;
+  }
+  if (hasSpecial) {
+    possibleChars += specialChar;
+  }
 
   var password = "";
   for (i = 0; i < length; i++) {
-    var randomIndex = Math.floor(Math.random() * length);
+    var randomIndex = Math.floor(Math.random() * possibleChars.length);
     if (i >= possibleChars.length) {
-      return password;
+      break;
     }
     password += possibleChars[randomIndex];
   }
